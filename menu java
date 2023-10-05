@@ -3,11 +3,11 @@ import java.util.Scanner;
 public class Calculator {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
-        int choice = 0;
+        int choice;
 
-        while (choice != 5) {
-            System.out.println("Menu:");
-            System.out.println("1. Addition");
+        do {
+            System.out.println("\n===== Calculator Menu =====");
+            System.out.println("\n1. Addition");
             System.out.println("2. Subtraction");
             System.out.println("3. Multiplication");
             System.out.println("4. Division");
@@ -29,24 +29,12 @@ public class Calculator {
                     performDivision(scanner);
                     break;
                 case 5:
-                    System.out.println("Exiting the calculator.");
+                    System.out.println("Thank you for using the calculator. Exiting...");
                     break;
                 default:
                     System.out.println("Invalid choice. Please enter a valid option.");
             }
-        }
+        } while (choice != 5);
 
         scanner.close();
     }
-
-    private static void performAddition(Scanner scanner) {
-        System.out.print("Enter first number: ");
-        double num1 = scanner.nextDouble();
-        System.out.print("Enter second number: ");
-        double num2 = scanner.nextDouble();
-        double result = num1 + num2;
-        System.out.println("Result: " + result);
-    }
-
-    // (rest of the code remains the same)
-}
