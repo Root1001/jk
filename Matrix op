@@ -1,0 +1,66 @@
+import java.util.Scanner;
+
+public class MatrixOperations {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        System.out.print("Enter number of rows for matrices: ");
+        int rows = scanner.nextInt();
+        System.out.print("Enter number of columns for matrices: ");
+        int columns = scanner.nextInt();
+
+        int[][] matrix1 = new int[rows][columns];
+        int[][] matrix2 = new int[rows][columns];
+
+        System.out.println("Enter elements of first matrix:");
+        fillMatrix(matrix1, scanner);
+
+        System.out.println("Enter elements of second matrix:");
+        fillMatrix(matrix2, scanner);
+
+        // Adding two matrices
+        int[][] sumMatrix = new int[rows][columns];
+        for (int i = 0; i < rows; i++) {
+            for (int j = 0; j < columns; j++) {
+                sumMatrix[i][j] = matrix1[i][j] + matrix2[i][j];
+            }
+        }
+
+        // Displaying the sum of matrices
+        System.out.println("Sum of the matrices:");
+        displayMatrix(sumMatrix);
+
+        // Finding the transpose of the sum matrix
+        int[][] transposeMatrix = new int[columns][rows];
+        for (int i = 0; i < columns; i++) {
+            for (int j = 0; j < rows; j++) {
+                transposeMatrix[i][j] = sumMatrix[j][i];
+            }
+        }
+
+        // Displaying the transpose of the sum matrix
+        System.out.println("Transpose of the sum matrix:");
+        displayMatrix(transposeMatrix);
+
+        scanner.close();
+    }
+
+    // Helper method to fill a matrix from user input
+    private static void fillMatrix(int[][] matrix, Scanner scanner) {
+        for (int i = 0; i < matrix.length; i++) {
+            for (int j = 0; j < matrix[0].length; j++) {
+                matrix[i][j] = scanner.nextInt();
+            }
+        }
+    }
+
+    // Helper method to display a matrix
+    private static void displayMatrix(int[][] matrix) {
+        for (int[] row : matrix) {
+            for (int element : row) {
+                System.out.print(element + " ");
+            }
+            System.out.println();
+        }
+    }
+}
